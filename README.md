@@ -1,12 +1,16 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/HR2Xz9sU)
-# [GroupID] your project title
-The goals of this project.
+# [group2] 股票價格預測
+The goals of this project. 
 
 ## Contributors
 |組員|系級|學號|工作分配|
 |-|-|-|-|
-|何大南|資科碩二|110753202|團隊中的吉祥物🦒，負責增進團隊氣氛| 
-|張小明|資科碩二|xxxxxxxxx|團隊的中流砥柱，一個人打十個|
+|李柏漢|資科碩二|113753218|簡報組| 
+|林靖淵|資科碩二|113356040|程式組|
+|陳昶安|資科碩二|113753121|簡報組|
+|林祐祥|資科碩二|113753114|程式組|
+|廖偉哲|資科碩二|113753222|簡報組|
+|陳彥融|資科碩二|110306018|程式組|
 
 ## Quick start
 Please provide an example command or a few commands to reproduce your analysis, such as the following R script:
