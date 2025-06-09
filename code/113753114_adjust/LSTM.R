@@ -16,7 +16,7 @@ test  <- fread("data/preparation/test.csv")
 id_col <- "stock_id"
 seq_len <- 30
 batch_size <- 128
-max_epochs <- 60
+max_epochs <- 40
 
 feature_cols <- setdiff(names(train), c(id_col,"date","target"))
 n_features   <- length(feature_cols)
@@ -57,8 +57,10 @@ cat("Sequences  ➜ Train:", dim(tr$X)[1],
 # 3. class weight (以 train 計) -------------------------------------------------
 ################################################################################
 tbl <- table(tr$y)
-class_wt <- dict(`0` = (1/tbl["0"])*(length(tr$y)/2),
-                 `1` = (1/tbl["1"])*(length(tr$y)/2))
+class_wt <- list(
+  "0" = (1 / tbl["0"]) * (length(tr$y) / 2),
+  "1" = (1 / tbl["1"]) * (length(tr$y) / 2)
+)
 
 ################################################################################
 # 4. CNN + Bi-LSTM + Keras-tuner ----------------------------------------------
@@ -106,7 +108,7 @@ build_model <- function(hp){
 tuner <- RandomSearch(
   build_model,
   objective      = "val_accuracy",
-  max_trials     = 150,          # ↑ 150 Trial
+  max_trials     = 100,          # ↑ 150 Trial
   executions_per_trial = 1,
   directory      = "tuner_dir",
   project_name   = "cnn_bilstm_stock"
@@ -121,8 +123,8 @@ tuner %>% fit_tuner(
   class_weight    = class_wt
 )
 
-best_hp <- tuner$get_best_hyperparameters(num_models = 1L)
-best_hp <- reticulate::py_get_item(best_hp, 0)   # 0-based 索引
+best_hp_all <- tuner$get_best_hyperparameters()
+best_hp     <- best_hp_all[[1]]
 
 ################################################################################
 # 5. 用 Train+Val 重訓 ----------------------------------------------------------
