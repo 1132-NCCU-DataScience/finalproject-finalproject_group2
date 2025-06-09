@@ -121,8 +121,8 @@ tuner %>% fit_tuner(
   class_weight    = class_wt
 )
 
-best_hp    <- tuner %>% get_best_hyperparameters(1)[[1]]
-final_mod  <- tuner %>% get_best_models(1)[[1]]
+best_hp <- tuner$get_best_hyperparameters(num_models = 1L)
+best_hp <- reticulate::py_get_item(best_hp, 0)   # 0-based 索引
 
 ################################################################################
 # 5. 用 Train+Val 重訓 ----------------------------------------------------------
