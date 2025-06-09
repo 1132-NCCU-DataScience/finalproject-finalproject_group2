@@ -1,1 +1,1 @@
-這兩支R檔案都要與data資料夾放在同一個層級
+LSTM與Preprocessing這兩支R檔案都要與data資料夾放在同一個層級
