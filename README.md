@@ -6,8 +6,7 @@ Final Project on 1132. Data Science at NCCU CS
 
 ## Goal
 
-This study analyzes major technology stocks in Taiwan by applying time series modeling to their historical prices, trading volumes, and technical indicators. Stock price prediction is performed using a Long Short-Term Memory (LSTM) model.
-The goals of this project.
+This study analyzes major technology stocks in Taiwan by applying time series modeling to their historical prices, trading volumes, and technical indicators. Stock price prediction is performed using a Long Short-Term Memory (LSTM) model
 
 ## Contributors
 
@@ -24,7 +23,7 @@ The goals of this project.
 
 #### 1. Python Crawler
 
-Automatically download historical prices and trading data for major Taiwanese technology stocks.
+Automatically download historical prices and trading data for major Taiwanese technology stocks
 
 ```Python
 python code/crawler.py
@@ -32,7 +31,7 @@ python code/crawler.py
 
 #### 2. Data Preprocessing
 
-Integrate, clean, and transform the raw data to generate standardized datasets suitable for deep learning models.
+Integrate, clean, and transform the raw data to generate standardized datasets suitable for deep learning models
 
 ```R
 Rscript code/preprocessing.R
@@ -40,7 +39,7 @@ Rscript code/preprocessing.R
 
 #### 3. LSTM Training and Prediction
 
-Train the LSTM model using the preprocessed data and perform stock price prediction.
+Train the LSTM model using the preprocessed data and perform stock price prediction
 
 ```R
 Rscript code/LSTM.R
@@ -50,8 +49,8 @@ Rscript code/LSTM.R
 
 ### docs
 
-- **簡報做好後連結放這**Your presentation, 1132_DS-FP_groupID.ppt/pptx/pdf (i.e.,1132_DS-FP_group2.ppt)
-- This project utilizes the LSTM (Long Short-Term Memory) model for training, which requires the **TensorFlow and keras_tuner packages**. Please ensure that these **essential packages are installed** before execution to guarantee the proper functioning of the model.
+- [1132_DS-FP_group2.pdf](/docs/資料科學期末報告測試.pdf)
+- This project utilizes the LSTM (Long Short-Term Memory) model for training, which requires the **TensorFlow and keras_tuner packages**. Please ensure that these **essential packages are installed** before execution to guarantee the proper functioning of the model
 
 ### data
 
@@ -64,7 +63,7 @@ Rscript code/LSTM.R
 
 ##### Analysis steps
 
-1. Implement an automated **Python-based crawler** to retrieve historical trading data of target stocks from the Taiwan Stock Exchange (TWSE) official API.
+1. Implement an automated **Python-based crawler** to retrieve historical trading data of target stocks from the Taiwan Stock Exchange (TWSE) official API
 
 - Output Specifications:
   - Dedicated storage folder per stock symbol
@@ -93,20 +92,25 @@ Rscript code/LSTM.R
 
 ##### Which method or package do you use?
 
-##### How do you perform training and evaluation?
-
-- Cross-validation, or extra separated data
+- TensorFlow, keras_tuner
 
 ##### What is a null model for comparison?
 
+- Test accuracy of the null model is approximately 53.7%
+- The best LSTM model and logistic regression achieve accuracies of 55.3% and 56%, respectively
+- According to empirical research, it is normal and reasonable for models such as LSTM and logistic regression to outperform the null model by only 1 to 3 percentage points in stock price movement prediction tasks
+
 ### results
 
-- What is your performance?
-- Is the improvement significant?
+- Confusion Matrix in different model
+  - LSTM
+    ![](/results/images/CM_LSTM_0.png)
+  - XGBoost
+    ![](/results/images/CM_XGB_0.png)
+  - Logistic Regression
+    ![](/results/images/CM_LogR_0.png)
 
 ## References
 
-- Packages you use
-- Related publications
 - [台灣證券交易所](https://www.twse.com.tw/zh/index.html)
 - [A Quick Guide to Organizing Computational Biology Projects.](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)
