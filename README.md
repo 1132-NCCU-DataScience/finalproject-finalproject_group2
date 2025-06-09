@@ -96,8 +96,8 @@ Rscript code/LSTM.R
 
 ##### What is a null model for comparison?
 
-- Test accuracy of the null model is approximately 53.7%
-- The best LSTM model and logistic regression achieve accuracies of 55.3% and 56%, respectively
+- Test accuracy of the null model is approximately **53.7%**
+- The best **LSTM** model and **logistic regression** achieve accuracies of **55.3% and 56%**, respectively
 - According to empirical research, it is normal and reasonable for models such as LSTM and logistic regression to outperform the null model by only 1 to 3 percentage points in stock price movement prediction tasks
 
 ### results
@@ -113,4 +113,6 @@ Rscript code/LSTM.R
 ## References
 
 - [台灣證券交易所](https://www.twse.com.tw/zh/index.html)
+- [A Study on Stock Forecasting Using Deep Learning and Statistical Models](https://arxiv.org/html/2402.06689v1)
+- [Forecasting stock prices changes using long-short term memory neural network with symbolic genetic programming](https://www.nature.com/articles/s41598-023-50783-0)
 - [A Quick Guide to Organizing Computational Biology Projects.](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)
