@@ -22,7 +22,7 @@ The goals of this project.
 
 ## Quick start
 
-##### 1. Python Crawler
+#### 1. Python Crawler
 
 Automatically download historical prices and trading data for major Taiwanese technology stocks.
 
@@ -30,7 +30,7 @@ Automatically download historical prices and trading data for major Taiwanese te
 python code/crawler.py
 ```
 
-##### 2. Data Preprocessing
+#### 2. Data Preprocessing
 
 Integrate, clean, and transform the raw data to generate standardized datasets suitable for deep learning models.
 
@@ -38,7 +38,7 @@ Integrate, clean, and transform the raw data to generate standardized datasets s
 Rscript code/preprocessing.R
 ```
 
-##### 3. LSTM Training and Prediction
+#### 3. LSTM Training and Prediction
 
 Train the LSTM model using the preprocessed data and perform stock price prediction.
 
@@ -50,7 +50,7 @@ Rscript code/LSTM.R
 
 ### docs
 
-- Your presentation, 1132_DS-FP_groupID.ppt/pptx/pdf (i.e.,1132_DS-FP_group2.ppt)
+- **簡報做好後連結放這**Your presentation, 1132_DS-FP_groupID.ppt/pptx/pdf (i.e.,1132_DS-FP_group2.ppt)
 - This project utilizes the LSTM (Long Short-Term Memory) model for training, which requires the **TensorFlow and keras_tuner packages**. Please ensure that these **essential packages are installed** before execution to guarantee the proper functioning of the model.
 
 ### data
@@ -108,4 +108,5 @@ Rscript code/LSTM.R
 
 - Packages you use
 - Related publications
+- [台灣證券交易所](https://www.twse.com.tw/zh/index.html)
 - [A Quick Guide to Organizing Computational Biology Projects.](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)
