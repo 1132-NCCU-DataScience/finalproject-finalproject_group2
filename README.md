@@ -32,10 +32,8 @@ Rscript code/your_script.R --input data/training --output results/performance.ts
 
 ### docs
 
-- Your presentation, 1132_DS-FP_groupID.ppt/pptx/pdf (i.e.,1132_DS-FP_group1.ppt), by **06.10**
-- Any related document for the project, i.e.,
-  - discussion log
-  - software user guide
+- Your presentation, 1132_DS-FP_groupID.ppt/pptx/pdf (i.e.,1132_DS-FP_group2.ppt)
+- This project utilizes the LSTM (Long Short-Term Memory) model for training, which requires the **TensorFlow and keras_tuner packages**. Please ensure that these **essential packages are installed** before execution to guarantee the proper functioning of the model.
 
 ### data
 
@@ -46,11 +44,42 @@ Rscript code/your_script.R --input data/training --output results/performance.ts
 
 ### code
 
-- Analysis steps
-- Which method or package do you use?
-- How do you perform training and evaluation?
-  - Cross-validation, or extra separated data
-- What is a null model for comparison?
+##### Analysis steps
+
+1. Implement an automated **Python-based crawler** to retrieve historical trading data of target stocks from the Taiwan Stock Exchange (TWSE) official API.
+
+- Output Specifications:
+  - Dedicated storage folder per stock symbol
+  - Monthly segmentation with filename format YYYY_MM.csv
+  - Data fields include **date, open, high, low, close prices, and trading volume**
+
+2. Data Preprocessing Pipeline
+
+- Multi-source Integration: Consolidate monthly CSV files into complete **time-series datasets**
+- Date format conversion (Republic of China calendar → Gregorian calendar) and outlier detection and correction for numerical fields (Tukey's fences method)
+- Calculate 5/20-day Moving Averages (MA), Generate 14-day Relative Strength Index (RSI), Construct MACD technical indicator differentials
+- Temporal split into **training (80%), validation (10%), and test (10%) sets**, Z-score standardization parameters derived from training set
+
+3. LSTM Model Construction & Validation
+
+- Input Layer: 30-day historical data window (30 timesteps × 15 features)
+- Core Layers:
+  - 1D Convolutional Layer (filters: 64-192, kernel_size=3)
+  - Bidirectional LSTM Layer (units: 128-384)
+- Output Layer: Binary classification layer with Sigmoid activation
+- Training Protocol:
+  - Hyperparameter search via keras-tuner (100 configurations)
+  - Weighted cross-entropy loss function for class imbalance mitigation
+  - Early stopping mechanism (patience=6) to prevent overfitting
+  - Final model retraining on combined training-validation dataset
+
+##### Which method or package do you use?
+
+##### How do you perform training and evaluation?
+
+- Cross-validation, or extra separated data
+
+##### What is a null model for comparison?
 
 ### results
 
