@@ -22,10 +22,28 @@ The goals of this project.
 
 ## Quick start
 
-Please provide an example command or a few commands to reproduce your analysis, such as the following R script:
+##### 1. Python Crawler
+
+Automatically download historical prices and trading data for major Taiwanese technology stocks.
+
+```Python
+python code/crawler.py
+```
+
+##### 2. Data Preprocessing
+
+Integrate, clean, and transform the raw data to generate standardized datasets suitable for deep learning models.
 
 ```R
-Rscript code/your_script.R --input data/training --output results/performance.tsv
+Rscript code/preprocessing.R
+```
+
+##### 3. LSTM Training and Prediction
+
+Train the LSTM model using the preprocessed data and perform stock price prediction.
+
+```R
+Rscript code/LSTM.R
 ```
 
 ## Folder organization and its related description
