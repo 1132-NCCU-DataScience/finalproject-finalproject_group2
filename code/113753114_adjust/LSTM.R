@@ -16,7 +16,7 @@ test  <- fread("data/preparation/test.csv")
 id_col <- "stock_id"
 seq_len <- 30
 batch_size <- 128
-max_epochs <- 40
+max_epochs <- 25
 
 feature_cols <- setdiff(names(train), c(id_col,"date","target"))
 n_features   <- length(feature_cols)
@@ -56,13 +56,15 @@ cat("Sequences  ➜ Train:", dim(tr$X)[1],
 ################################################################################
 # 3. class weight (以 train 計) -------------------------------------------------
 ################################################################################
-tbl <- table(tr$y)
-class_wt <- list(
-  "0" = (1 / tbl["0"]) * (length(tr$y) / 2),
-  "1" = (1 / tbl["1"]) * (length(tr$y) / 2)
-)
+library(reticulate)
 
-################################################################################
+tbl <- table(tr$y)
+
+class_wt <- reticulate::dict()
+class_wt[[as.integer(0)]] <- as.numeric((1 / tbl["0"]) * (length(tr$y) / 2))
+class_wt[[as.integer(1)]] <- as.numeric((1 / tbl["1"]) * (length(tr$y) / 2))
+
+############################################################################
 # 4. CNN + Bi-LSTM + Keras-tuner ----------------------------------------------
 ################################################################################
 build_model <- function(hp){
