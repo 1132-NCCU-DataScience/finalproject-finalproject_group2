@@ -112,7 +112,12 @@ Rscript code/LSTM.R
 
 ### results
 
-- Confusion Matrix in different model
+- Accuracy of models :
+  - LSTM : 0.5532
+  - XGBoost : 0.5411
+  - Logistic Regression : 0.5642
+
+- Confusion Matrix of models :
   - LSTM
     ![](/results/images/CM_LSTM_0.png)
   - XGBoost
