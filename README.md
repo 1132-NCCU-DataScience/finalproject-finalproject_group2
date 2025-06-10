@@ -10,14 +10,14 @@ This study analyzes major technology stocks in Taiwan by applying various modeli
 
 ## Contributors
 
-| 組員   | 系級     | 學號      | 工作分配                           |
-| ------ | -------- | --------- | ---------------------------------- |
-| 李柏漢 | 資科碩一 | 113753218 | 簡報組、上台報告                   |
-| 林靖淵 | 資管碩一 | 113356040 | 程式組、資料前處理                 |
-| 陳昶安 | 資科碩一 | 113753121 | 簡報組、撰寫文件、擔任團隊吉祥物🦆 |
-| 林祐祥 | 資科碩一 | 113753114 | 程式組、資料爬蟲                   |
-| 廖偉哲 | 資科碩一 | 113753222 | 簡報組、簡報製作                   |
-| 陳彥融 | 資管四乙 | 110306018 | 程式組、模型訓練                   |
+| 組員   | 系級     | 學號      | 工作分配           |
+| ------ | -------- | --------- | ------------------ |
+| 李柏漢 | 資科碩一 | 113753218 | 簡報組、上台報告   |
+| 林靖淵 | 資管碩一 | 113356040 | 程式組、資料前處理 |
+| 陳昶安 | 資科碩一 | 113753121 | 簡報組、撰寫文件   |
+| 林祐祥 | 資科碩一 | 113753114 | 程式組、資料爬蟲   |
+| 廖偉哲 | 資科碩一 | 113753222 | 簡報組、簡報製作   |
+| 陳彥融 | 資管四乙 | 110306018 | 程式組、模型訓練   |
 
 ## Quick start
 
@@ -100,19 +100,21 @@ Rscript code/LSTM.R
 
 ##### What is a null model for comparison?
 
-- Model  :
-  * Use a Single variable model to serve as null model, which estimates the probability of a positive class (1 in this case) for each decile bin of a numeric feature, then applies these probabilities to predict new values.
-  * Moreover, to identify the variable that best predicts the target, a sweep through all variables in the training dataset was performed.
-  * More details can be found in [Null model R script](/code/Null_model.R)
+- Model :
+
+  - Use a Single variable model to serve as null model, which estimates the probability of a positive class (1 in this case) for each decile bin of a numeric feature, then applies these probabilities to predict new values.
+  - Moreover, to identify the variable that best predicts the target, a sweep through all variables in the training dataset was performed.
+  - More details can be found in [Null model R script](/code/Null_model.R)
 
 - Result Comparison :
-  * Test accuracy of the null model is approximately **53.70%**
-  * The best **LSTM** model and **Logistic regression** achieve accuracies of **55.3% and 56.42%**, respectively
-  * According to empirical research, it is normal and reasonable for models such as LSTM and logistic regression to outperform the null model by only 1 to 3 percentage points in stock price movement prediction tasks
+  - Test accuracy of the null model is approximately **53.70%**
+  - The best **LSTM** model and **Logistic regression** achieve accuracies of **55.3% and 56.42%**, respectively
+  - According to empirical research, it is normal and reasonable for models such as LSTM and logistic regression to outperform the null model by only 1 to 3 percentage points in stock price movement prediction tasks
 
 ### results
 
 - Accuracy of models :
+
   - LSTM : 0.5532
   - XGBoost : 0.5411
   - Logistic Regression : 0.5642
