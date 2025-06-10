@@ -6,7 +6,7 @@ Final Project on 1132. Data Science at NCCU CS
 
 ## Goal
 
-This study analyzes major technology stocks in Taiwan by applying time series modeling to their historical prices, trading volumes, and technical indicators. Stock price prediction is performed using a Long Short-Term Memory (LSTM) model
+This study analyzes major technology stocks in Taiwan by applying various modeling techniques to their historical prices, trading volumes, and technical indicators. The direction of stock price movements are predicted methods such as machine learning and deep learning models, including but not limited to Long Short-Term Memory (LSTM) model and eXtreme Gradient Boosting.
 
 ## Contributors
 
@@ -96,7 +96,7 @@ Rscript code/LSTM.R
 
 ##### Which method or package do you use?
 
-- TensorFlow, keras_tuner
+- Packages: Keras, TensorFlow, keras_tuner, XGBoost, dplyr, ggplot2
 
 ##### What is a null model for comparison?
 
@@ -128,6 +128,7 @@ Rscript code/LSTM.R
 ## References
 
 - [台灣證券交易所](https://www.twse.com.tw/zh/index.html)
+- [ChatGPT](https://chatgpt.com/)
 - [A Study on Stock Forecasting Using Deep Learning and Statistical Models](https://arxiv.org/html/2402.06689v1)
 - [Forecasting stock prices changes using long-short term memory neural network with symbolic genetic programming](https://www.nature.com/articles/s41598-023-50783-0)
 - [A Quick Guide to Organizing Computational Biology Projects.](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424)
