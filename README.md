@@ -84,22 +84,44 @@ Rscript code/LSTM.R
 - Calculate 5/20-day Moving Averages (MA), Generate 14-day Relative Strength Index (RSI), Construct MACD technical indicator differentials
 - Temporal split into **training (80%), validation (10%), and test (10%) sets**, Z-score standardization parameters derived from training set
 
-3. LSTM Model Construction & Validation
+3. Modeling
 
-- Input Layer: 30-day historical data window (30 timesteps × 15 features)
-- Core Layers:
-  - 1D Convolutional Layer (filters: 64-192, kernel_size=3)
-  - Bidirectional LSTM Layer (units: 128-384)
-- Output Layer: Binary classification layer with Sigmoid activation
-- Training Protocol:
-  - Hyperparameter search via keras-tuner (100 configurations)
-  - Weighted cross-entropy loss function for class imbalance mitigation
-  - Early stopping mechanism (patience=6) to prevent overfitting
-  - Final model retraining on combined training-validation dataset
+- Prepare the training, validation, and testing datasets in formats appropriate for each type of model
+- Perform hyperparameter tuning using either dedicated packages or a custom grid search loop. Train the model on the training set and evaluate its performance on the validation set
+- Retrain the final model on the combined training and validation data using the optimal set of hyperparameters
+
+4. Evaluation
+
+- Evaluate the performance of the final model on the testing data
+- Compute relevant evaluation metrics, with a primary focus on accuracy in this case
+- Compare the results to those of a null model or baseline, and determine whether further tuning is needed or the current model is satisfactory
 
 ##### Which method or package do you use?
 
-- Packages: keras, tensorFlow, keras_tuner, xgboost, dplyr, ggplot2
+- Methods of modeling:
+1. LSTM Model Construction & Validation
+  - Input Layer: 30-day historical data window (30 timesteps × 15 features)
+  - Core Layers:
+    - 1D Convolutional Layer (filters: 64-192, kernel_size = 3)
+    - Bidirectional LSTM Layer (units: 128-384)
+  - Output Layer: Binary classification layer with Sigmoid activation
+  - Training Protocol:
+    - Hyperparameter search via keras-tuner (100 configurations)
+    - Weighted cross-entropy loss function for class imbalance mitigation
+    - Early stopping mechanism (patience = 6) to prevent overfitting
+    - Final model retraining on combined training-validation dataset
+
+2. XGBoost
+  - Input format: The date and stock_id columns were removed, and each data point was treated as independent, as XGBoost does not rely on temporal dependencies
+  - Training Protocol:
+    - A grid search combined with 5-fold cross-validation was performed to identify the optimal set of hyperparameters from a predefined search space
+    - The final model was retrained using the selected optimal hyperparameters
+
+3. Logistic Regression
+  - Input format: For the same reason as with XGBoost, date and stock_id columns were removed
+  - Training Protocol: The model is directly trained on training data
+
+- Packages: keras, tensorflow, keras_tuner, xgboost, dplyr, ggplot2
 
 ##### What is a null model for comparison?
 
@@ -107,7 +129,6 @@ Rscript code/LSTM.R
 
   - Use a Single variable model to serve as null model, which estimates the probability of a positive class (1 in this case) for each decile bin of a numeric feature, then applies these probabilities to predict new values.
   - Moreover, to identify the variable that best predicts the target, a sweep through all variables in the training dataset was performed.
-  - More details can be found in [Null model R script](/code/Null_model.R)
 
 - Result Comparison :
   - Test accuracy of the null model is approximately **53.70%**
@@ -117,7 +138,6 @@ Rscript code/LSTM.R
 ### results
 
 - Accuracy of models :
-
   - LSTM : 0.5532
   - XGBoost : 0.5411
   - Logistic Regression : 0.5642
