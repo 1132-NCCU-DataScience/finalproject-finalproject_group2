@@ -50,8 +50,8 @@ Rscript code/LSTM.R
 ### docs
 
 - This project utilizes the LSTM (Long Short-Term Memory) model for training, which requires the **TensorFlow and keras_tuner packages**. Please ensure that these **essential packages are installed** before execution to guarantee the proper functioning of the model
-- [1132_DS-FP_group2.pdf](/docs/資料科學期末報告.pdf)
-- [1132_DS-Poster_group2.pdf](/docs/資料科學海報.pdf)
+- [1132_DS-FP_group2.pdf](/docs/Presentation/資料科學期末報告.pdf)
+- [1132_DS-Poster_group2.pdf](/docs/Presentation/資料科學海報.pdf)
 
 ### data
 
