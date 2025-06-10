@@ -2,7 +2,7 @@ library(tidyverse)
 library(keras)
 library(abind)
 
-stock <- read.csv("preparation2_standardization.csv")
+stock <- read.csv("data/preparation2_standardization.csv")
 
 # train-test split
 set.seed(1000)
