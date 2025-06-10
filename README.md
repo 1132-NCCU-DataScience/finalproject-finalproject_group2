@@ -72,54 +72,54 @@ Rscript code/LSTM.R
 
 1. Implement an automated **Python-based crawler** to retrieve historical trading data of target stocks from the Taiwan Stock Exchange (TWSE) official API
 
-- Output Specifications:
-  - Dedicated storage folder per stock symbol
-  - Monthly segmentation with filename format YYYY_MM.csv
-  - Data fields include **date, open, high, low, close prices, and trading volume**
+    - Output Specifications:
+      - Dedicated storage folder per stock symbol
+      - Monthly segmentation with filename format YYYY_MM.csv
+      - Data fields include **date, open, high, low, close prices, and trading volume**
 
 2. Data Preprocessing Pipeline
 
-- Multi-source Integration: Consolidate monthly CSV files into complete **time-series datasets**
-- Date format conversion (Republic of China calendar → Gregorian calendar) and outlier detection and correction for numerical fields (Tukey's fences method)
-- Calculate 5/20-day Moving Averages (MA), Generate 14-day Relative Strength Index (RSI), Construct MACD technical indicator differentials
-- Temporal split into **training (80%), validation (10%), and test (10%) sets**, Z-score standardization parameters derived from training set
+    - Multi-source Integration: Consolidate monthly CSV files into complete **time-series datasets**
+    - Date format conversion (Republic of China calendar → Gregorian calendar) and outlier detection and correction for numerical fields (Tukey's fences method)
+    - Calculate 5/20-day Moving Averages (MA), Generate 14-day Relative Strength Index (RSI), Construct MACD technical indicator differentials
+    - Temporal split into **training (80%), validation (10%), and test (10%) sets**, Z-score standardization parameters derived from training set
 
 3. Modeling
 
-- Prepare the training, validation, and testing datasets in formats appropriate for each type of model
-- Perform hyperparameter tuning using either dedicated packages or a custom grid search loop. Train the model on the training set and evaluate its performance on the validation set
-- Retrain the final model on the combined training and validation data using the optimal set of hyperparameters
+    - Prepare the training, validation, and testing datasets in formats appropriate for each type of model
+    - Perform hyperparameter tuning using either dedicated packages or a custom grid search loop. Train the model on the training set and evaluate its performance on the validation set
+    - Retrain the final model on the combined training and validation data using the optimal set of hyperparameters
 
 4. Evaluation
 
-- Evaluate the performance of the final model on the testing data
-- Compute relevant evaluation metrics, with a primary focus on accuracy in this case
-- Compare the results to those of a null model or baseline, and determine whether further tuning is needed or the current model is satisfactory
+    - Evaluate the performance of the final model on the testing data
+    - Compute relevant evaluation metrics, with a primary focus on accuracy in this case
+    - Compare the results to those of a null model or baseline, and determine whether further tuning is needed or the current model is satisfactory
 
 ##### Which method or package do you use?
 
 - Methods of modeling:
-1. LSTM Model Construction & Validation
-  - Input Layer: 30-day historical data window (30 timesteps × 15 features)
-  - Core Layers:
-    - 1D Convolutional Layer (filters: 64-192, kernel_size = 3)
-    - Bidirectional LSTM Layer (units: 128-384)
-  - Output Layer: Binary classification layer with Sigmoid activation
-  - Training Protocol:
-    - Hyperparameter search via keras-tuner (100 configurations)
-    - Weighted cross-entropy loss function for class imbalance mitigation
-    - Early stopping mechanism (patience = 6) to prevent overfitting
-    - Final model retraining on combined training-validation dataset
+  1. LSTM Model Construction & Validation
+      - Input Layer: 30-day historical data window (30 timesteps × 15 features)
+      - Core Layers:
+        - 1D Convolutional Layer (filters: 64-192, kernel_size = 3)
+        - Bidirectional LSTM Layer (units: 128-384)
+      - Output Layer: Binary classification layer with Sigmoid activation
+      - Training Protocol:
+        - Hyperparameter search via keras-tuner (100 configurations)
+        - Weighted cross-entropy loss function for class imbalance mitigation
+        - Early stopping mechanism (patience = 6) to prevent overfitting
+        - Final model retraining on combined training-validation dataset
+  
+  2. XGBoost
+      - Input format: The date and stock_id columns were removed, and each data point was treated as independent, as XGBoost does not rely on temporal dependencies
+      - Training Protocol:
+        - A grid search combined with 5-fold cross-validation was performed to identify the optimal set of hyperparameters from a predefined search space
+        - The final model was retrained using the selected optimal hyperparameters
 
-2. XGBoost
-  - Input format: The date and stock_id columns were removed, and each data point was treated as independent, as XGBoost does not rely on temporal dependencies
-  - Training Protocol:
-    - A grid search combined with 5-fold cross-validation was performed to identify the optimal set of hyperparameters from a predefined search space
-    - The final model was retrained using the selected optimal hyperparameters
-
-3. Logistic Regression
-  - Input format: For the same reason as with XGBoost, date and stock_id columns were removed
-  - Training Protocol: The model is directly trained on training data
+  3. Logistic Regression
+      - Input format: For the same reason as with XGBoost, date and stock_id columns were removed
+      - Training Protocol: The model is directly trained on training data
 
 - Packages: keras, tensorflow, keras_tuner, xgboost, dplyr, ggplot2
 
