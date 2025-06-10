@@ -49,8 +49,9 @@ Rscript code/LSTM.R
 
 ### docs
 
-- [1132_DS-FP_group2.pdf](/docs/資料科學期末報告.pdf)
 - This project utilizes the LSTM (Long Short-Term Memory) model for training, which requires the **TensorFlow and keras_tuner packages**. Please ensure that these **essential packages are installed** before execution to guarantee the proper functioning of the model
+- [1132_DS-FP_group2.pdf](/docs/資料科學期末報告.pdf)
+- [1132_DS-Poster_group2.pdf](/docs/資料科學海報.pdf)
 
 ### data
 
@@ -62,6 +63,8 @@ Rscript code/LSTM.R
     - After preprocessing, the data is consolidated into a single table with added technical indicators and derived features, and is ultimately saved in CSV format for convenient use in deep learning models
   - Size
     - This study covers 50 major Taiwanese technology stocks, with daily trading data from January 2021 to June 2025. Each stock has approximately 1,000 to 1,100 records, totaling about 50,000 raw data entries. After feature engineering and data splitting, the final training, validation, and test datasets contain approximately 40,000 records
+  - docs/台股科技優質股清單.csv
+    - major Taiwanese technology stocks list
 
 ### code
 
