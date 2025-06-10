@@ -96,7 +96,7 @@ Rscript code/LSTM.R
 
 ##### Which method or package do you use?
 
-- Packages: Keras, TensorFlow, keras_tuner, XGBoost, dplyr, ggplot2
+- Packages: keras, tensorFlow, keras_tuner, xgboost, dplyr, ggplot2
 
 ##### What is a null model for comparison?
 
