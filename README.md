@@ -100,9 +100,15 @@ Rscript code/LSTM.R
 
 ##### What is a null model for comparison?
 
-- Test accuracy of the null model is approximately **53.7%**
-- The best **LSTM** model and **logistic regression** achieve accuracies of **55.3% and 56%**, respectively
-- According to empirical research, it is normal and reasonable for models such as LSTM and logistic regression to outperform the null model by only 1 to 3 percentage points in stock price movement prediction tasks
+- Model  :
+  * Use a Single variable model to serve as null model, which estimates the probability of a positive class (1 in this case) for each decile bin of a numeric feature, then applies these probabilities to predict new values.
+  * Moreover, to identify the variable that best predicts the target, a sweep through all variables in the training dataset was performed.
+  * More details can be found in [Null model R script](/code/Null_model.R)
+
+- Result Comparison :
+  * Test accuracy of the null model is approximately **53.70%**
+  * The best **LSTM** model and **Logistic regression** achieve accuracies of **55.3% and 56.42%**, respectively
+  * According to empirical research, it is normal and reasonable for models such as LSTM and logistic regression to outperform the null model by only 1 to 3 percentage points in stock price movement prediction tasks
 
 ### results
 
