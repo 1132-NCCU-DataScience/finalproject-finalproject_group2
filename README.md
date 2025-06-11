@@ -6,7 +6,7 @@ Final Project on 1132. Data Science at NCCU CS
 
 ## Goal
 
-This study analyzes major technology stocks in Taiwan by applying various modeling techniques to their historical prices, trading volumes, and technical indicators. The direction of stock price movements are predicted methods such as machine learning and deep learning models, including but not limited to Long Short-Term Memory (LSTM) model and eXtreme Gradient Boosting.
+This study analyzes major technology stocks in Taiwan by applying various modeling techniques to their historical prices, trading volumes, and technical indicators. The direction of stock price movements are predicted methods such as machine learning and deep learning models, including but not limited to Long Short-Term Memory (LSTM) model and eXtreme Gradient Boosting (XGBoost).
 
 ## Contributors
 
@@ -26,7 +26,7 @@ This study analyzes major technology stocks in Taiwan by applying various modeli
 Automatically download historical prices and trading data for major Taiwanese technology stocks
 
 ```Python
-python code/crawler.py
+python code/Data Crawler/crawler.py
 ```
 
 #### 2. Data Preprocessing
@@ -34,7 +34,7 @@ python code/crawler.py
 Integrate, clean, and transform the raw data to generate standardized datasets suitable for deep learning models
 
 ```R
-Rscript code/preprocessing.R
+Rscript code/Data Preprocess/preprocessing.R
 ```
 
 #### 3. LSTM Training and Prediction
@@ -42,7 +42,7 @@ Rscript code/preprocessing.R
 Train the LSTM model using the preprocessed data and perform stock price prediction
 
 ```R
-Rscript code/LSTM.R
+Rscript code/Models/LSTM.R
 ```
 
 ## Folder organization and its related description

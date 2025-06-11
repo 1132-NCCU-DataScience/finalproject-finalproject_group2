@@ -1,0 +1,1 @@
+At first, we used ver1 for preprocessing, but we later realized it caused data leakage during standardization. So we redesigned the preprocessing into ver2, and all models were based on data processed with this improved version.
