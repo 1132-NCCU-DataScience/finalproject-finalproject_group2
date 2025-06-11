@@ -1,1 +1,2 @@
-At first, we used ver1 for preprocessing, but we later realized it caused data leakage during standardization. So we redesigned the preprocessing into ver2, and all models were based on data processed with this improved version.
+* At first, we used ver1 for preprocessing, but we later realized it caused data leakage during standardization. So we redesigned the preprocessing into ver2, and all models were based on data processed with this improved version.
+* ver1 has markdown document and Rmd with preprocessing code contained, ver2 has only R codes.
